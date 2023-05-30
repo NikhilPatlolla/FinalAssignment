@@ -1,0 +1,45 @@
+package com.nikhil.consumer;
+
+import java.util.Queue;
+
+public class ConsumerClass implements Runnable {
+	private Queue<Integer> queue;
+	private int sum;
+
+	public ConsumerClass(Queue<Integer> queue) {
+		this.queue = queue;
+	}
+
+	@Override
+	public void run() {
+		synchronized (queue) {
+			while (queue.isEmpty()) {
+				try {
+					queue.wait();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		}
+
+		while (true) {
+			synchronized (queue) {
+				if (!queue.isEmpty()) {
+					Integer queueVal = queue.poll();
+					System.out.println("Consumer accepted value " + queueVal);
+					sum+= queueVal;
+					queue.notifyAll();
+				}else {
+					break;
+				}
+
+			}
+		}
+	}
+
+	public int getSum() {
+		return sum;
+	}
+}

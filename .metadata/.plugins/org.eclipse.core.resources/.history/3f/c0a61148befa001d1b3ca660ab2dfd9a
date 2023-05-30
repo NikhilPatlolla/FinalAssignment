@@ -1,0 +1,57 @@
+package com.nikhil.main;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import com.nikhil.util.JdbcUtil;
+
+public class JdbcReadApp {
+	public static void main(String[] args) throws SQLException {
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet resultSet = null;
+
+		Scanner scanner = new Scanner(System.in);
+//		System.out.print("Enter the sid: ");
+//		int sid = scanner.nextInt();
+
+		try {
+			connection = JdbcUtil.getJdbcConnection();
+
+			String sqlSelectQuery = "select * from students";
+
+			if (connection != null) {
+				pstmt = connection.prepareStatement(sqlSelectQuery);
+			}
+			if (pstmt != null) {
+				resultSet = pstmt.executeQuery();
+			}
+
+			if (resultSet != null) {
+				System.out.println("\tFirstName\tLastName\tAddress\tCity");
+				while (resultSet.next()) {
+					String firstName = resultSet.getString(1);
+					String LastName = resultSet.getString(2);
+					String Address = resultSet.getString(3);
+					String City = resultSet.getString(4);
+					System.out.println("\t" + firstName + "\t" + LastName + "\t" + Address + "\t" + City);
+				}
+			} else {
+				System.out.println("Record is not available in the database");
+			}
+
+		} catch (SQLException sqlE) {
+			sqlE.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.closeConnection(resultSet, pstmt, connection);
+			if (scanner != null) {
+				scanner.close();
+			}
+		}
+	}
+}

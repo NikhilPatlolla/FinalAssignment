@@ -1,0 +1,10 @@
+package com.nikhil.producer;
+
+public class ProducerClass implements Runnable{
+
+	@Override
+	public void run() {
+		
+	}
+
+}

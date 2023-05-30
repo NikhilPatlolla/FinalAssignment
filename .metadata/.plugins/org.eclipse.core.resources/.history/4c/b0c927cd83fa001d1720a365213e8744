@@ -1,0 +1,38 @@
+package com.nikhil.main;
+
+import java.util.Scanner;
+
+public class BinarySearchClass {
+	public static void main(String[] args) {
+		System.out.println("Please enter a number to be searched in the list of sorted array");
+		Scanner scan = new Scanner(System.in);
+		int userInput = Integer.parseInt(scan.nextLine());
+
+	}
+
+	private static int binarySearch(int[] arr, int val, int start, int end) {
+
+		int mid = arr.length / 2;
+
+//		for (int i = 0; i < arr.length; i++) {
+//			
+//		}
+		
+		
+		int targetIndex;
+		
+		while(end>start) {
+			if (arr[mid] == arr[val]) {
+				targetIndex = val;
+			} else if (arr[mid] < arr[val]) {
+				
+			} else {
+				
+			}
+		}
+
+
+		return targetIndex;
+
+	}
+}

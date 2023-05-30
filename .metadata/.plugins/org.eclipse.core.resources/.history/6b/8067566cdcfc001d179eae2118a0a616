@@ -1,0 +1,13 @@
+<%
+    session = request.getSession();
+    String name = (String) session.getAttribute("name");
+%>
+
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Welcome, <%= name %>!</h1>
+</body>
+</html>

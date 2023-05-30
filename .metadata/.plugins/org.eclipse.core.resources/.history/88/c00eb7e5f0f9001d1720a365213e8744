@@ -1,0 +1,12 @@
+package com.nikhil.main;
+
+import com.nikhil.banking.Bank;
+import com.nikhil.banking.UserAccount;
+
+public class App {
+	public static void main(String[] args) {
+		UserAccount user1 = new UserAccount("userA");
+		Bank bank = new Bank(user1);
+		bank.authenticate
+	}
+}

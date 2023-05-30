@@ -1,0 +1,21 @@
+package com.nikhil.banking;
+
+import java.util.List;
+import java.util.Map;
+
+public class Bank {
+	private String name; 
+//	private List<String> users;
+	private Map<String, Integer> bankUserData;
+	
+	
+	
+	public void userLogin() {
+		
+	}
+	
+	
+	public void addMoney() {
+		
+	}
+}

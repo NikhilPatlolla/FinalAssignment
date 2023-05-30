@@ -1,0 +1,12 @@
+package com.nikhil.consumer;
+
+import java.util.Queue;
+
+public class ConsumerClass implements Runnable {
+	private Queue<Integer> queue;
+
+	@Override
+	public void run() {
+	}
+
+}

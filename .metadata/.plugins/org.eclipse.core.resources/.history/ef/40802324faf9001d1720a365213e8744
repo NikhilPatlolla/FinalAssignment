@@ -1,0 +1,11 @@
+package com.nikhil.abstractionClass;
+
+public abstract class AnAbstractclass {
+	private String instanceVariable;
+	
+	public AnAbstractclass(String instanceVariable) {
+		this.instanceVariable = instanceVariable;
+	}
+	
+	public abstract void abstractMethod();
+}

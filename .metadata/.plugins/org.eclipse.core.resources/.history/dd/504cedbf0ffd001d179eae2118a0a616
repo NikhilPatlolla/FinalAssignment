@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Posts</title>
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    
+    <%
+        // Import necessary classes
+        // Assuming you are using JDBC for database access
+        // Adjust the package and class names as per your project structure
+        %><%@ page import="com.nikhil.controller.BlogPost" %><%
+        %><%@ page import="com.nikhil.controller.BlogPosts" %><%
+
+        // Instantiate the BlogPostDAO (data access object)
+        BlogPostDAO blogPostDAO = new BlogPostDAO();
+
+        // Retrieve the blog posts from the database
+        List<BlogPost> blogPosts = blogPostDAO.getAllBlogPosts();
+
+        // Iterate over the blog posts and display them
+        for (BlogPost blogPost : blogPosts) {
+    %>
+        <div>
+            <h2><%= blogPost.getTitle() %></h2>
+            <p><%= blogPost.getContent() %></p>
+        </div>
+    <%
+        }
+    %>
+</body>
+</html>

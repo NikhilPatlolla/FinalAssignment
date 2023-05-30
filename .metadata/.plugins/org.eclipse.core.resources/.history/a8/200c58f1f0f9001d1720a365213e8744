@@ -1,0 +1,49 @@
+package com.nikhil.banking;
+
+import java.util.Map;
+import java.util.Scanner;
+
+public class Bank {
+	private static String name;
+//	private List<String> users;
+	private Map<String, Integer> bankUserData;
+	private UserAccount user;
+	private static boolean isLoggedin;
+
+	public Bank(UserAccount user) {
+		this.user = user;
+	}
+
+	private static boolean isUserLogedIn() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("please enter the username ");
+		String enteredUsername = scan.nextLine();
+		System.out.println("please enter the password ");
+		String enteredPassword = scan.nextLine();
+		for (int i = 0; i < 3; i++) {
+			if (enteredUsername.equals(name) && enteredPassword.equals(enteredPassword + "@123")) {
+				isLoggedin = true;
+				return true;
+			}
+		}
+		return false;
+
+	}
+
+	public void addMoney() {
+		if (isLoggedin) {
+			System.out.println("Enter the amount you want to add ");
+			Scanner scan = new Scanner(System.in);
+			Integer amount = Integer.parseInt(scan .nextLine());
+			user.userAddMoney();
+		}
+
+	}
+
+	public void withDrayMoney() {
+		if (isLoggedin) {
+			
+		}
+
+	}
+}

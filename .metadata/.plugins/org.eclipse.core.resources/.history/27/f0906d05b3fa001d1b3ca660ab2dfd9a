@@ -1,0 +1,41 @@
+package com.nikhil.userlist;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class UserList {
+	public static void main(String[] args) {
+		Scanner scan;
+		List<Integer> useList;
+
+		List<Integer> userListInput = userListInput(new ArrayList<>(), new Scanner(System.in));
+
+		System.out.println(userListInput);
+
+//		= new Scanner(System.in);
+
+	}
+
+	private static List<Integer> userListInput(List<Integer> list, Scanner scan) {
+
+		scan = new Scanner(System.in);
+		System.out.println("Give the values to be put in the list, if you want to end the list, enter \n");
+		while (true) {
+			String value = scan.nextLine();
+			if (value.equalsIgnoreCase("done")) {
+				break;
+			}
+			try {
+				Integer input = Integer.parseInt(value);
+				list.add(input);
+			} catch (NumberFormatException nfe) {
+				System.out.println("the entered value is not a number, ending the list input");
+				nfe.getMessage();
+			}
+
+		}
+		scan.close();
+		return list;
+	}
+}

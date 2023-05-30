@@ -1,0 +1,25 @@
+package com.nikhil.banking;
+
+public class UserAccount {
+	private String userName;
+	private static final String password = "user1Password";
+
+	public UserAccount() {
+		
+	}
+	
+	
+	public String getUserName() {
+		return userName;
+	}
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+	public UserAccount(String userName) {
+		
+	}
+}

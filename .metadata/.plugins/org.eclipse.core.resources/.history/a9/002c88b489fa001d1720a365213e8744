@@ -1,0 +1,10 @@
+package com.nikhil.consumer;
+
+public class ConsumerClass implements Runnable{
+
+	@Override
+	public void run() {
+		
+	}
+
+}

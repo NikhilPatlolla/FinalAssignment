@@ -1,0 +1,44 @@
+package com.nikhil.app;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+import com.nikhil.consumer.ConsumerClass;
+import com.nikhil.producer.ProducerClass;
+
+public class ProducerConsumerApp {
+	public static final int LENGTH = 15;
+
+	// the program would never end if we do not decide the no of times the
+	// producerClass will add values to the queue, here it is 50
+	public static final int MAX_NUMBERS = 50;
+
+	public static void main(String[] args) {
+		Queue<Integer> queue = new LinkedList<>();
+
+		ProducerClass producerClass = new ProducerClass(queue);
+		ConsumerClass consumerClass = new ConsumerClass(queue);
+
+		System.out.println("Starting the program");
+
+		Thread prodThread = new Thread(producerClass);
+		Thread custThread = new Thread(consumerClass);
+
+		prodThread.start();
+		custThread.start();
+
+		// we want to be able to close the program only after the prod and cust threads
+		// completed their operations
+
+		try {
+			prodThread.join();
+			custThread.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("End of the application... ");
+	}
+
+}

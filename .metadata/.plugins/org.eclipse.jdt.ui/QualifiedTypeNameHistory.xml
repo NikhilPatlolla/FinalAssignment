@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.Math"/>
+    <fullyQualifiedTypeName name="java.awt.Rectangle"/>
+    <fullyQualifiedTypeName name="com.nikhil.polymorphism.Shape"/>
+    <fullyQualifiedTypeName name="com.nikhil.polymorphism.Rectangle"/>
+    <fullyQualifiedTypeName name="com.nikhil.demo.ChildClass"/>
+    <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
+    <fullyQualifiedTypeName name="com.nikhil.banking.UserAccount"/>
+    <fullyQualifiedTypeName name="com.nikhil.banking.Bank"/>
+    <fullyQualifiedTypeName name="com.nikhil.abstractionClass.AnAbstractclass"/>
+    <fullyQualifiedTypeName name="com.nikhil.abstractionClass.AbstractclassChild"/>
+    <fullyQualifiedTypeName name="com.nikhil.InterfaceClass.IclassInterfaceImpl"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.Queue"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="com.nikhil.app.ProducerConsumerApp"/>
+    <fullyQualifiedTypeName name="java.lang.Thread"/>
+    <fullyQualifiedTypeName name="com.nikhil.producer.ProducerClass"/>
+    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="com.nikhil.util.JdbcUtil"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.annotation.WebServlet"/>
+    <fullyQualifiedTypeName name="org.hibernate.annotations.Entity"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,8 @@
+package com.nikhil.main;
+
+public class RelationShipDemo {
+
+	public static void main(String[] args) {
+		System.out.println("We want to be able to invoke the parent constructor when child object is created");
+	}
+}

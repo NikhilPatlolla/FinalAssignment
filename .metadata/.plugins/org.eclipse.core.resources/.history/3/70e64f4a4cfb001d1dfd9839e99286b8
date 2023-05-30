@@ -1,0 +1,16 @@
+package com.nikhil.main;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import com.nikhil.util.JavaUtilJdbc;
+
+public class PostgreSqlUpdate {
+	public static void main(String[] args) {
+		try (Connection connection = JavaUtilJdbc.getJdbcConnection()) {
+			String sqlInsertQuery = "INSERT INTO students (name, age) VALUES (?, ?)";
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}

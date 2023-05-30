@@ -1,0 +1,5 @@
+package com.nikhil.util;
+
+public class JdbcUtilClass {
+
+}

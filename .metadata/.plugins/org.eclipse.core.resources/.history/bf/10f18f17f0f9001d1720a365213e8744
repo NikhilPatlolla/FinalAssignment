@@ -1,0 +1,22 @@
+package com.nikhil.banking;
+
+public class UserAccount {
+	private String userName;
+	private String password;
+	private Integer currentAmount = 100;
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public UserAccount(String userName) {
+		this.userName = userName;
+		this.password = "userPassword"+ this.userName;
+	}
+
+	public void userAddMoney(int amount) {
+		currentAmount += amount;
+
+	}
+
+}

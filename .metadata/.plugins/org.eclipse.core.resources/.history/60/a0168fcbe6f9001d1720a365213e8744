@@ -1,0 +1,24 @@
+package com.nikhil.main;
+
+import java.awt.Rectangle;
+
+import com.nikhil.polymorphism.Shape;
+
+public class PolymorphismUsingShape {
+
+	public static void main(String[] args) {
+		/*
+		 * In this updated version, the Shape interface remains the same. The shape classes Rectangle, Square, Triangle, and Circle still implement the Shape interface. 
+		 * However, when creating instances of these shapes, we assign them to variables of the Shape type. This allows us to utilize polymorphism.
+
+			By treating all shape objects as instances of the Shape interface, we can invoke the calculatePerimeter() method on each object without needing to know the specific shape. 
+			This enables us to write more flexible and scalable code, as we can easily add new shapes that implement the Shape interface without modifying the code that uses these shapes.
+		 * 
+		 * 
+		 * */
+		System.out.println("An interface by the name shape is created with the respective fields needed to calculate perimeter");
+		
+		Rectangle rectangle = new Rectangle(4,6);
+	}
+
+}

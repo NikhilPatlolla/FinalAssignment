@@ -1,0 +1,10 @@
+package com.nikhil.banking;
+
+import java.util.List;
+import java.util.Map;
+
+public class Bank {
+	private String name; 
+//	private List<String> users;
+//	private Map<String, String> bankUserPasswordData;
+}

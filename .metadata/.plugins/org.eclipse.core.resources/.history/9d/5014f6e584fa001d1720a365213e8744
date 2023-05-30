@@ -1,0 +1,37 @@
+package com.nikhil.main;
+
+import java.util.Scanner;
+
+public class BinarySearchClass {
+	public static void main(String[] args) {
+		System.out.println("Please enter a number to be searched in the list of sorted array");
+		Scanner scan = new Scanner(System.in);
+		int userInput = Integer.parseInt(scan.nextLine());
+		int[] arr = new int[] {2, 5, 7, 8, 22};
+		int index = binarySearch(arr, userInput, 0, arr.length);
+		if(index==-1) {
+			System.out.println("The value is not present in the array");
+		}else {
+			System.out.println("The index of the value in the array is "+ index);
+		}
+
+	}
+
+	private static int binarySearch(int[] arr, int val, int start, int end) {
+
+		int mid = arr.length / 2;
+
+		while (end >= start) {
+			if (arr[mid] == val) {
+				return mid;
+			} else if (arr[mid] < val) {
+				start = mid + 1;
+			} else {
+				end = mid - 1;
+			}
+		}
+
+		return -1;
+
+	}
+}

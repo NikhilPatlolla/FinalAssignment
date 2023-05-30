@@ -1,0 +1,5 @@
+package com.nikhil.polymorphism;
+
+public interface Shape {
+
+}

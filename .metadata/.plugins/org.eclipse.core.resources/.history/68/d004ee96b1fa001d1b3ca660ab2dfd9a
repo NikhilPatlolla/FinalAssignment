@@ -1,0 +1,15 @@
+package com.nikhil.userlist;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class UserList {
+	public static void main(String[] args) {
+		Scanner scan;
+		List<Integer> useList;
+		
+//		= new Scanner(System.in);
+		
+		
+	}
+}

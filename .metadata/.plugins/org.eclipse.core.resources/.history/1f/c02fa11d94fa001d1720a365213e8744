@@ -1,0 +1,57 @@
+package com.nikhil.producer;
+
+import java.util.Queue;
+import java.util.Random;
+
+import com.nikhil.app.ProducerConsumerApp;
+
+public class ProducerClass implements Runnable {
+
+	private Queue<Integer> queue;
+	private boolean productionComplete;
+
+	public ProducerClass(Queue<Integer> queue) {
+		this.queue = queue;
+		this.productionComplete = false;
+	}
+
+	@Override
+	public void run() {
+		Random random = new Random();
+		for (int i = 0; i < ProducerConsumerApp.MAX_NUMBERS; i++) {
+			// initially the queue will be empty
+			synchronized (queue) {
+				while (queue.size() == ProducerConsumerApp.LENGTH) {
+					try {
+						queue.wait();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+				}
+
+				int value = random.nextInt(1000);
+				queue.offer(value);
+				System.out.println("Producer added the value " + value + " " + queue.size());
+
+				if (i == ProducerConsumerApp.MAX_NUMBERS - 1)
+					Thread.currentThread().interrupt();
+				// after a value in the queue is added, the other threads are notified
+				queue.notifyAll();
+			}
+		}
+
+		synchronized (queue) {
+			productionComplete = true;
+			queue.notifyAll();
+		}
+		
+		
+		public boolean isProductionComplete() {
+			return productionComplete;
+		}
+
+	}
+
+}

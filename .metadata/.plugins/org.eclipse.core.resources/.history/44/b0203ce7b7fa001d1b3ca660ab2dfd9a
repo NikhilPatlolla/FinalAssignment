@@ -1,0 +1,19 @@
+package com.nikhil.userlist;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SampleListTest {
+	public static void main(String[] args) {
+		List list = new ArrayList<>();
+		list.add(10); 
+		list.add(30);
+		
+		List list2 = new ArrayList<>(list);
+		list2.add("second");
+		list2.add("babbaer");
+		
+		System.out.println(list);
+		System.out.println(list2);
+	}
+}

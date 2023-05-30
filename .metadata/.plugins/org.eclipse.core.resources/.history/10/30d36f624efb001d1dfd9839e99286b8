@@ -1,0 +1,59 @@
+package com.nikhil.main;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.nikhil.util.JavaUtilJdbc;
+
+public class PostgreSqlUpdate {
+	public static void main(String[] args) throws SQLException {
+		Connection connection = null;
+		String sqlInsertQuery = null;
+		PreparedStatement pstmt = null;
+		try {
+			connection = JavaUtilJdbc.getJdbcConnection();
+			sqlInsertQuery = "INSERT INTO students (name, address) VALUES (?, ?)";
+			if (connection != null) {
+				pstmt = connection.prepareStatement(sqlInsertQuery);
+			}
+			if (pstmt != null) {
+				pstmt.setString(1, "virat");
+				pstmt.setString(2, "RCB");
+				// adding the row to the batch, so that next row could be added before updating
+				// the database
+				pstmt.addBatch();
+
+				pstmt.setString(1, "dhoni");
+				pstmt.setString(2, "CSK");
+
+				pstmt.addBatch();
+
+				// Uploading the batch to the database
+				int[] result = pstmt.executeBatch();
+
+				int successfulUploads = 0;
+				
+				for (int i : result) {
+					/*
+					 * If the value in the result array is greater than or equal to 0, it represents
+					 * the number of rows affected by the corresponding SQL statement. A value of 0
+					 * indicates that the statement was executed successfully but did not affect any
+					 * rows
+					 */
+					if (i >= 0) {
+						successfulUploads++;
+					}
+				}
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JavaUtilJdbc.closeConnection(null, pstmt, connection);
+		}
+	}
+}

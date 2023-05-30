@@ -1,0 +1,14 @@
+package com.nikhil.app;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class ProducerConsumerApp {
+	private static final int LENGTH = 10; 
+	private static final int MAX_NUMBERS  = 10; 
+	
+	public static void main(String[] args) {
+		Queue<Integer> queue = new LinkedList<>();
+	}
+
+}

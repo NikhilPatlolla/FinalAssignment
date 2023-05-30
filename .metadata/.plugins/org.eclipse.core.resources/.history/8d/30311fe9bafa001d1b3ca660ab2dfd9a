@@ -1,0 +1,27 @@
+package com.nikhil.main;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.nikhil.util.JdbcUtil;
+
+public class JdbcReadApp {
+	public static void main(String[] args) {
+		Connection connection = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet resultSet = null; 
+		
+		try {
+			connection = JdbcUtil.getJdbcConnection();
+			
+			String sqlSelectQuery = "select name, age, address from student";
+			
+		}catch(SQLException sqlE){
+			sqlE.printStackTrace();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

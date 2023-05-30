@@ -1,0 +1,32 @@
+package com.nikhil.main;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.nikhil.util.JavaUtilJdbc;
+
+public class PostgreSqlUpdate {
+	public static void main(String[] args) {
+		try (Connection connection = JavaUtilJdbc.getJdbcConnection()) {
+			String sqlInsertQuery = "INSERT INTO students (name, address) VALUES (?, ?)";
+			PreparedStatement pstmt = connection.prepareStatement(sqlInsertQuery);
+			if (pstmt != null) {
+				pstmt.setString(1, "virat");
+				pstmt.setString(2, "RCB");
+				// adding the row to the batch, so that next row could be added before updating
+				// the db
+				pstmt.addBatch();
+				
+				pstmt.setString(1, "dhoni");
+				pstmt.setString(2, "CSK");
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

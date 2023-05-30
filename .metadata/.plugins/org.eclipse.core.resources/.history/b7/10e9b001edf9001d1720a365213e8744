@@ -1,0 +1,15 @@
+package com.nikhil.banking;
+
+public class UserAccount {
+	private String userName;
+	private String password;
+
+	public UserAccount() {
+		
+	}
+	
+	
+	public UserAccount(String userName) {
+		
+	}
+}

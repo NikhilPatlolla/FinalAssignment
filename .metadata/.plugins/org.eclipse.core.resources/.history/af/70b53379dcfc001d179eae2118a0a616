@@ -1,0 +1,55 @@
+package com.nikhil.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+
+public class SessionServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+
+	    // Retrieve the user's name from the session
+	    String name = (String) session.getAttribute("name");
+
+	    // Set the response content type
+	    response.setContentType("text/html");
+
+	    // Create a PrintWriter to write the response
+	    PrintWriter out = response.getWriter();
+
+	    // Write the HTML response
+	    out.println("<html>");
+	    out.println("<head><title>Welcome</title></head>");
+	    out.println("<body>");
+	    out.println(request.getContextPath());
+	    out.println("<h1>Welcome, " + name + "!</h1>");
+	    out.println("</body>");
+	    out.println("</html>");
+	    out.close();
+	}
+	
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    // Get the user's name from the form submission
+	    String name = request.getParameter("name");
+
+	    // Get the session object
+	    HttpSession session = request.getSession();
+
+	    // Set the user's name as a session attribute
+	    session.setAttribute("name", name);
+
+	    // Redirect to the index page
+	    response.sendRedirect(request.getContextPath() + "/test");
+	}
+
+
+}

@@ -1,0 +1,71 @@
+package com.nikhil.userlist;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class UserList {
+	public static void main(String[] args) {
+
+		List<Integer> userListInput = userListInput(new ArrayList<>(), new Scanner(System.in));
+
+		System.out.println(userListInput);
+
+		Integer secondLargest = findTheSecondLargest(userListInput);
+		if (secondLargest == -1)
+			System.out.println("the list is too short to have a second largest");
+		Integer secondSmallest = findTheSecondSmallest(userListInput);
+		if (secondSmallest == -1)
+			System.out.println("the list is too short to have a second smallest");
+
+		System.out.println("The secondLargest and the secondSmallest values of the list are " + secondLargest + " and "
+				+ secondSmallest + " respectively");
+
+	}
+
+	private static Integer findTheSecondLargest(List<Integer> userListInput) {
+		if (userListInput.size() < 2) {
+			return -1;
+		}
+		List<Integer> userListCopy = new ArrayList<>(userListInput);
+		Collections.sort(userListCopy, Collections.reverseOrder());
+		System.out.println(userListCopy);
+		return 1;
+	}
+
+	private static Integer findTheSecondSmallest(List<Integer> userListInput) {
+		if (userListInput.size() < 2) {
+			return -1;
+		}
+		List<Integer> userListCopy = new ArrayList<>(userListInput);
+		// the best way to find the second largest value in the list is to sort the list
+		// and
+		// find the value at the second index
+
+		Collections.sort(userListCopy);
+		return 1;
+	}
+
+	private static List<Integer> userListInput(List<Integer> list, Scanner scan) {
+
+		scan = new Scanner(System.in);
+		System.out.println("Give the values to be put in the list, if you want to end the list, enter 'done' \n");
+		while (true) {
+			String value = scan.nextLine();
+			if (value.equalsIgnoreCase("done")) {
+				break;
+			}
+			try {
+				Integer input = Integer.parseInt(value);
+				list.add(input);
+			} catch (NumberFormatException nfe) {
+				System.out.println("the entered value is not a number, ending the list input");
+				nfe.getMessage();
+			}
+
+		}
+		scan.close();
+		return list;
+	}
+}

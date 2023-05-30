@@ -1,0 +1,12 @@
+package com.nikhil.main;
+
+import com.nikhil.abstractionClass.AbstractclassChild;
+import com.nikhil.abstractionClass.AnAbstractclass;
+
+public class AbstractVsInterface {
+	public static void main(String[] args) {
+		// the reference can be of the abstract type as it is the parent of the child
+		// class that implemented the abstract class
+		AnAbstractclass abstChild = new AbstractclassChild("hello");
+	}
+}

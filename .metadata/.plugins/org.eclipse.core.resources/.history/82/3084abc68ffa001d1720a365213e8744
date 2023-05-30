@@ -1,0 +1,103 @@
+package com.nikhil.sample;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Random;
+
+public class ProducerConsumerExample {
+    static final int MAX_QUEUE_SIZE = 10;
+    static final int NUM_VALUES_TO_PRODUCE = 100;
+
+    public static void main(String[] args) {
+        Queue<Integer> queue = new LinkedList<>();
+        
+        Producer producer = new Producer(queue);
+        Consumer consumer = new Consumer(queue);
+        
+        Thread producerThread = new Thread(producer);
+        Thread consumerThread = new Thread(consumer);
+        
+        producerThread.start();
+        consumerThread.start();
+        
+        try {
+            producerThread.join();
+            consumerThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.println("Sum of values: " + consumer.getSum());
+    }
+}
+
+class Producer implements Runnable {
+    private Queue<Integer> queue;
+
+
+    public Producer(Queue<Integer> queue) {
+        this.queue = queue;
+    }
+
+    @Override
+    public void run() {
+        Random random = new Random();
+        for (int i = 0; i < ProducerConsumerExample.NUM_VALUES_TO_PRODUCE; i++) {
+            synchronized (queue) {
+                while (queue.size() == ProducerConsumerExample.MAX_QUEUE_SIZE) {
+                    try {
+                        queue.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                int value = random.nextInt(100);
+                queue.offer(value);
+                System.out.println("Produced: " + value);
+                queue.notifyAll();
+            }
+        }
+    }
+}
+
+class Consumer implements Runnable {
+    private Queue<Integer> queue;
+    private boolean isProducerFinished;
+    private int sum;
+
+    public Consumer(Queue<Integer> queue) {
+        this.queue = queue;
+        this.isProducerFinished = false;
+
+    }
+
+    @Override
+    public void run() {
+        synchronized (queue) {
+            while (queue.isEmpty() && !isProducerFinished) {
+                try {
+                    queue.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        
+        while (true) {
+            synchronized (queue) {
+                if (!queue.isEmpty()) {
+                    int value = queue.poll();
+                    System.out.println("Consumed: " + value);
+                    sum += value;
+                    queue.notifyAll();
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
+    public int getSum() {
+        return sum;
+    }
+}

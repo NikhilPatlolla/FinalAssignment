@@ -1,0 +1,29 @@
+package com.nikhil.main;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StreamOperations {
+	public static void main(String[] args) {
+		List<Integer> dataset = Arrays.asList(10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160,
+				170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370,
+				380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500);
+
+		System.out.println(dataset);
+
+		// we get the stream object by using the stream() on the list object
+		System.out.println("filtering only values that are divisible by 7");
+		List<Integer> divisibleBy7 = dataset.stream().filter(e -> e % 7 == 0).collect(Collectors.toList());
+		System.out.println(divisibleBy7);
+
+		System.out.println("the count could also be gotten using the count method at the end");
+		long count = dataset.stream().filter(e -> e % 7 == 0).count();
+		System.out.println(count);
+
+		System.out.println("divinding all the values in the list by 10");
+		List<Integer> collect = dataset.stream().map(e -> e / 10).collect(Collectors.toList());
+		System.out.println(collect);
+
+	}
+}

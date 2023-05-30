@@ -1,0 +1,25 @@
+package com.nikhil.main;
+
+import com.nikhil.demo.ChildClass;
+
+public class RelationShipDemo {
+
+	public static void main(String[] args) {
+		/*
+		 * In this program, we have a Parent class with a parameterless constructor that
+		 * simply prints a message indicating that the parent constructor is invoked.
+		 * The Child class extends the Parent class and has its own constructor. Inside
+		 * the Child constructor, we call the super() statement, which invokes the
+		 * parent class constructor explicitly.
+		 * 
+		 * In the RelationShipDemo class, we create an instance of the Child class by calling new
+		 * Child(). When we run the program, it will output:
+		 * 
+		 */
+		System.out.println("We want to be able to invoke the parent constructor when child object is created");
+
+		ChildClass child = new ChildClass();
+		System.out.println(
+				"since super() can't be placed below the sysout statment, parent class constructor will be first to be printed in the console");
+	}
+}

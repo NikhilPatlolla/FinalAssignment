@@ -1,0 +1,21 @@
+package com.nikhil.main;
+
+import java.util.Scanner;
+
+import com.nikhil.banking.Bank;
+import com.nikhil.banking.UserAccount;
+
+public class App {
+	public static void main(String[] args) {
+		
+		
+		System.out.println("please enter the name of the user: ");
+		Scanner scan = new Scanner(System.in);
+		String user = scan.nextLine();
+		UserAccount user1 = new UserAccount("userA");
+		Bank bank = new Bank(user1);
+		
+		
+		
+	}
+}

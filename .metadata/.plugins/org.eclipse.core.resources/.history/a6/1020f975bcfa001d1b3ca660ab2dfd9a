@@ -1,0 +1,53 @@
+package com.nikhil.main;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import com.nikhil.util.JdbcUtil;
+
+public class JdbcReadApp {
+	public static void main(String[] args) throws SQLException {
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet resultSet = null;
+
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter the sid: ");
+		int sid = scanner.nextInt();
+
+		try {
+			connection = JdbcUtil.getJdbcConnection();
+
+			String sqlSelectQuery = "select sid,sname,sage,saddr from student where sid=?";
+
+			if (connection != null) {
+				pstmt = connection.prepareStatement(sqlSelectQuery);
+			}
+			if (pstmt != null) {
+				pstmt.setInt(1, sid);
+				resultSet = pstmt.executeQuery();
+			}
+
+			if (resultSet != null) {
+				if (resultSet.next()) {
+					System.out.println("SID\tSNAME\tsAGE\tsADDR");
+					System.out.println(resultSet.getInt(0));
+
+				}
+			}
+
+		} catch (SQLException sqlE) {
+			sqlE.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.closeConnection(resultSet, pstmt, connection);
+			if(scanner!=null) {
+				scanner.close();
+			}
+		}
+	}
+}
